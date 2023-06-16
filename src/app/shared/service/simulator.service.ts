@@ -45,7 +45,7 @@ export class SimulatorService {
        * @returns valor das parcelas
        */
     private getInstallmentsValue(): number {
-        return this.customerData.proposalValue / this.customerData.installments;
+        return this.getAmountWithInterest() / this.customerData.installments;
     }
 
     /**
