@@ -33,30 +33,54 @@ span {
     width: 100%;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0%);
-    }
+.title {
+    font-size: 20px;
+    color: #808080;
 }
 
-@keyframes slideOut {
-    from {
-        transform: translateX(0%);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
+.sub-title {
+    font-size: 40px;
+    line-height: 45px;
 }
 
-.slide-in {
-    animation: slideIn 300ms ease-in;
+.description {
+    font-size: 20px; 
+    letter-spacing: 1px;
+    line-height: 27px;
+    color: #808080;
 }
 
-.slide-out {
-    animation: slideOut 300ms ease-in;
+.left-content {
+    padding: 100px;
+}
+
+.right-content {
+    padding: 70px;
+}
+
+.margin {
+    margin: 20px;
+}
+
+.form {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.btn-style {
+    text-align:center;
+    margin-top: 50px;
+}
+
+button {
+    font-size: 15px;
+    padding: 30px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-hint {
+    color: #9e9d9d;
 }

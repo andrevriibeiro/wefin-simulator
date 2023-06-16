@@ -1,9 +1,9 @@
-<mat-card style="width: 100%">
-    <div style="width: 100%; text-align: center; margin-top: 20px;">
-        <span style="font-size: 30px;">Temos uma ótima proposta para você!</span>
+<mat-card>
+    <div class="card-header">
+        <span>Temos uma ótima proposta para você!</span>
     </div>
-    <div style="width: 100%;">
-        <mat-card-content style="margin-top: 30px;margin-left: 25%; margin-right: 25%;">
+    <div class="content">
+        <mat-card-content>
             <mat-accordion>
                 <mat-expansion-panel class="disabled-pointer" hideToggle expanded="false">
                     <mat-expansion-panel-header>
@@ -37,7 +37,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
 
-                    <table style="width: 100%;">
+                    <table>
                         <thead>
                           <tr>
                             <th style="width: 100px"># Parcela</th>
@@ -45,7 +45,7 @@
                             <th style="width: 150px">Data de Vencimento</th>
                           </tr>
                         </thead>
-                        <tbody style="text-align: center;">
+                        <tbody>
                           <tr *ngFor="let installment of range()">
                             <td style="width: 100px">{{installment}}</td>
                             <td style="width: 100px">{{proposal.installmentValue | currency: 'BRL' : 'symbol' : '1.2-2'}}</td>
@@ -71,13 +71,15 @@
             </mat-accordion>
         </mat-card-content>
     </div>
-    <div style="margin-left: 25%; margin-right: 25%;">
-        <mat-checkbox [checked]="proposalAccepted"  (change)="proposalAccepted = !proposalAccepted"class="example-margin">
-            Aceito a proposta</mat-checkbox>
-        <div style="text-align: center;margin-bottom: 20px;">
-            <button [disabled]="!proposalAccepted" style="font-size: 15px; 
-              padding: 30px;" mat-raised-button color="primary"
-              (click)="finalizeProposal()"> Confirme sua Solicitação
+    <div class="card-footer">
+        <mat-checkbox [checked]="proposalAccepted" class="example-margin"
+            (change)="proposalAccepted = !proposalAccepted">
+            Aceito a proposta
+        </mat-checkbox>
+        <div class="btn-style">
+            <button [disabled]="!proposalAccepted" 
+               mat-raised-button color="primary"
+               (click)="finalizeProposal()"> Confirme sua Solicitação
             </button>
         </div>
       </div>

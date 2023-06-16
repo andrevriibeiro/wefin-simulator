@@ -1,11 +1,10 @@
 <div class="container">
     <!-- left content -->
     <div class="flex">
-        <div style="padding: 100px;">
-            <h4 style="font-size: 20px; color: #808080;">Empréstimo para alavancar seus négocios.</h4>
-            <p style="font-size: 40px; line-height: 45px;">Temos a melhor solução do mercado de cŕedito.</p>
-            <p style="font-size: 20px; letter-spacing: 1px;line-height: 27px;
-                color: #808080;">
+        <div class="left-content">
+            <h4 class="title">Empréstimo para alavancar seus négocios.</h4>
+            <p class="sub-title">Temos a melhor solução do mercado de cŕedito.</p>
+            <p class="description">
                 Na WeFin você tem crédito com juros baixos e toda a credibilidade de
                 uma empresa com mais de 16 anos fornecendo soluções de crédito e financiamento.
             </p>
@@ -14,18 +13,20 @@
 
     <!-- right content -->
     <div class="flex">
-        <div style="padding: 70px;">
+        <div class="right-content">
             <!-- first step -->
             <mat-card class="example-card" 
                 [@cardAnimation]="firstCardState" *ngIf="displayProposalValueCard">
-                <div style="margin: 20px">
+                <div class="margin">
                     <div> <span> Qual valor de empréstimo deseja?</span> </div>
                     <!-- proposal value -->
-                    <div style="margin-top: 50px; width: 100%;">
-                        <mat-form-field style="width: 100%;" appearance="fill" floatLabel="always">
+                    <div class="form">
+                        <mat-form-field appearance="fill" floatLabel="always">
                             <mat-label>Valor desejado</mat-label>
-                            <input matInput ngModel name="valorTotal"
-                                type="number" [min]="minProposalValue" [max]="maxProposalValue"
+                            <input matInput ngModel
+                                name="valorTotal"
+                                type="number" [min]="minProposalValue"
+                                [max]="maxProposalValue"
                                 [(ngModel)]="totalValue" />
                         </mat-form-field>
                     </div>
@@ -39,9 +40,8 @@
                         </mat-slider>
                     </div>
                     <!-- next step button-->
-                    <div style="text-align:center; margin-top: 50px;">
+                    <div class="btn-style">
                         <button mat-raised-button color="primary" 
-                            style="font-size: 15px; padding: 30px;"
                             (click)="nextStep()"
                             [disabled]="disableNextStepBtn()">Simule Agora
                             <mat-icon>arrow_right_alt </mat-icon>
@@ -53,11 +53,11 @@
             <!-- second step -->
             <mat-card class="example-card" 
                 [@cardAnimation]="firstCardState" *ngIf="!displayProposalValueCard">
-                <div style="margin: 20px">
-                    <div style="margin-top: 50px; width: 100%;">
+                <div class="margin">
+                    <div class="form">
                         <form [formGroup]="formGroup">
                             <!-- proposal value -->
-                            <mat-form-field style="width: 100%;" appearance="fill" floatLabel="always">
+                            <mat-form-field appearance="fill" floatLabel="always">
                                 <mat-label>Valor desejado</mat-label>
                                 <input matInput 
                                     formControlName="proposalValue" 
@@ -65,7 +65,7 @@
                             </mat-form-field>
 
                             <!-- full name -->
-                            <mat-form-field style="width: 100%;" appearance="fill">
+                            <mat-form-field appearance="fill">
                                 <mat-label>Nome Completo</mat-label>
                                 <input matInput 
                                     formControlName="fullName" type="text"
@@ -73,20 +73,18 @@
                             </mat-form-field>
 
                             <!-- number of installments -->
-                            <mat-form-field style="width: 100%;" appearance="fill">
+                            <mat-form-field appearance="fill">
                                 <mat-label>Número de Parcelas</mat-label>
                                 <input matInput formControlName="installments" type="number"
                                     placeholder="número de parcelas" />
-                                <mat-hint style="color: #9e9d9d;" align="end">
+                                <mat-hint align="end">
                                     Quantidade mínima: 12 / Quantidade máxima: 48
                                 </mat-hint>
                             </mat-form-field>
                         </form>
                     </div>
-                    <div style="text-align:center; margin-top: 50px;">
-                        <button 
-                            style="font-size: 15px; padding: 30px;" 
-                            mat-raised-button color="primary"
+                    <div class="btn-style">
+                        <button mat-raised-button color="primary"
                             [disabled]="!formGroup.valid"
                             (click)="simulate()">Simular empréstimo
                             <mat-icon>arrow_right_alt </mat-icon>

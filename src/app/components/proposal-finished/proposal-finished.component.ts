@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Proposal } from 'src/app/shared/interface/proposal.insterface';
 import { SimulatorService } from 'src/app/shared/service/simulator.service';
 
@@ -14,7 +15,7 @@ export class ProposalFinishedComponent implements OnInit {
     proposalValue: 0
   }
 
-  public constructor(private simulatorService: SimulatorService) {
+  public constructor(private simulatorService: SimulatorService, private router: Router) {
 
   }
 
@@ -31,4 +32,11 @@ export class ProposalFinishedComponent implements OnInit {
     return (this.proposal.proposalValue * 5) / 100;
   }
 
+  /**
+   * metodo responsavel por retornar a pagina inicial
+   * 
+   */
+  public goToHome() {
+    this.router.navigate(['']);
+  }
 }
