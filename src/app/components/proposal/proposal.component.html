@@ -1,0 +1,84 @@
+<mat-card style="width: 100%">
+    <div style="width: 100%; text-align: center; margin-top: 20px;">
+        <span style="font-size: 30px;">Temos uma ótima proposta para você!</span>
+    </div>
+    <div style="width: 100%;">
+        <mat-card-content style="margin-top: 30px;margin-left: 25%; margin-right: 25%;">
+            <mat-accordion>
+                <mat-expansion-panel class="disabled-pointer" hideToggle expanded="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Nome do Solicitante
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.fullName}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="disabled-pointer" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Valor das Parcelas
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.installmentValue | currency: 'BRL' : 'symbol' : '1.2-2'}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Número de Parcelas
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.installments}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <table style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th style="width: 100px"># Parcela</th>
+                            <th style="width: 100px">Valor</th>
+                            <th style="width: 150px">Data de Vencimento</th>
+                          </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                          <tr *ngFor="let installment of range()">
+                            <td style="width: 100px">{{installment}}</td>
+                            <td style="width: 100px">{{proposal.installmentValue | currency: 'BRL' : 'symbol' : '1.2-2'}}</td>
+                            <td style="width: 150px">{{getInstallmentDate(installment) | date:'dd/MM/yyyy' }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Valor Total (com Júros)
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.amountWithInterest | currency: 'BRL' : 'symbol' : '1.2-2'}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p> <strong> Valor do Emprestimo: </strong> {{proposal.proposalValue | currency: 'BRL' : 'symbol' : '1.2-2'}}</p>
+                    <p> <strong> Juros: </strong> {{ getInterest() | currency: 'BRL' : 'symbol' : '1.2-2'}}</p>
+                    <p> <strong> Total: </strong> {{proposal.amountWithInterest | currency: 'BRL' : 'symbol' : '1.2-2'}}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </div>
+    <div style="margin-left: 25%; margin-right: 25%;">
+        <mat-checkbox [checked]="proposalAccepted"  (change)="proposalAccepted = !proposalAccepted"class="example-margin">
+            Aceito a proposta</mat-checkbox>
+        <div style="text-align: center;margin-bottom: 20px;">
+            <button [disabled]="!proposalAccepted" style="font-size: 15px; 
+              padding: 30px;" mat-raised-button color="primary"
+              (click)="finalizeProposal()"> Confirme sua Solicitação
+            </button>
+        </div>
+      </div>
+</mat-card>

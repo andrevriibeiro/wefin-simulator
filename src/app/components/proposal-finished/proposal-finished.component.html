@@ -1,0 +1,57 @@
+<mat-card style="width: 100%">
+    <div style="width: 100%; text-align: center; margin-top: 20px;">
+        <span style="font-size: 30px;">O empréstimo foi realizado com sucesso! Veja abaixo o que você contratouê!</span>
+    </div>
+    <div style="width: 100%;">
+        <mat-card-content style="margin-top: 30px;margin-left: 25%; margin-right: 25%;">
+            <mat-accordion>
+                <mat-expansion-panel class="disabled-pointer" hideToggle expanded="false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Nome do Solicitante
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.fullName}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="disabled-pointer" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Valor das Parcelas
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.installmentValue | currency: 'BRL' : 'symbol' : '1.2-2'}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="disabled-pointer" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Número de Parcelas
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.installments}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel class="disabled-pointer" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Valor Total (com Júros)
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{proposal.amountWithInterest | currency: 'BRL' : 'symbol' : '1.2-2'}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p> <strong> Valor do Emprestimo: </strong> {{proposal.proposalValue | currency: 'BRL' : 'symbol' : '1.2-2'}}</p>
+                    <p> <strong> Juros: </strong> {{ getInterest() | currency: 'BRL' : 'symbol' : '1.2-2'}}</p>
+                    <p> <strong> Total: </strong> {{proposal.amountWithInterest | currency: 'BRL' : 'symbol' : '1.2-2'}}</p>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card-content>
+    </div>
+</mat-card>
